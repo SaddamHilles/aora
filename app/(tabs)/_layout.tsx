@@ -1,34 +1,86 @@
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Tabs } from 'expo-router';
-import React from 'react';
-
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-      }}>
+        tabBarActiveTintColor: '#ffa001',
+        // tabBarShowLabel: false,
+        tabBarInactiveTintColor: '#cdcde0',
+        tabBarStyle: {
+          backgroundColor: '#161622',
+          borderTopColor: '#232533',
+          height: 70,
+          borderTopWidth: 1,
+          paddingBottom: 10,
+        },
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name='settings'
         options={{
-          title: 'Home',
+          title: 'Settings',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+            <FontAwesome size={28} name='cog' focused={focused} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name='create'
         options={{
-          title: 'Explore',
+          title: 'Create',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <FontAwesome
+              focused={focused}
+              size={28}
+              name='user-plus'
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name='home'
+        options={{
+          title: 'Home',
+          tabBarIcon: ({ color, focused }) => (
+            <FontAwesome
+              className='border rounded'
+              focused={focused}
+              size={38}
+              name='home'
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name='profile'
+        options={{
+          title: 'Profile',
+          tabBarIcon: ({ color, focused }) => (
+            <FontAwesome
+              size={28}
+              focused={focused}
+              name='user'
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name='bookmark'
+        options={{
+          title: 'Bookmark',
+          tabBarIcon: ({ color, focused }) => (
+            <FontAwesome
+              size={28}
+              focused={focused}
+              name='bookmark'
+              color={color}
+            />
           ),
         }}
       />
